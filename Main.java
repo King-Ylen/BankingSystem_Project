@@ -34,13 +34,16 @@ public class Main {
                     System.out.print("Enter account number: ");
                     String num = sc.nextLine();
 
+                    System.out.print("Set your password: ");
+                    String pass = sc.nextLine();
+
                     System.out.print("Enter owner name: ");
                     String owner = sc.nextLine();
 
                     System.out.print("Enter starting balance: ");
                     double bal = sc.nextDouble();
 
-                    SavingsAccount newAcc = new SavingsAccount(num, owner, bal, 0.05);
+                    SavingsAccount newAcc = new SavingsAccount(num, owner, bal, 0.05, pass);
                     accounts.add(newAcc);
 
                     System.out.println("Account created successfully!");
@@ -50,10 +53,16 @@ public class Main {
                     System.out.print("Enter account number: ");
                     String searchNum = sc.nextLine();
 
+                    System.out.print("Enter password: ");
+                    String searchPass = sc.nextLine();
+
                     SavingsAccount acc = findAccount(accounts, searchNum);
 
                     if (acc == null) {
                         System.out.println("Account not found!");
+                    } if (!acc.checkPassword(searchPass)) {
+                        System.out.println("Incorrect Password!");
+                        break;
                     } else {
                         int subChoice;
                         do {
