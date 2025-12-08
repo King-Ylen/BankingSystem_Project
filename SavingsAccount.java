@@ -10,6 +10,8 @@ public class SavingsAccount extends BankAccount {
     public void applyInterest() {
         double interest = getBalance() * interestRate;
         deposit(interest);
+        System.out.println("================================");
         System.out.println("Interest added: " + interest);
+        System.out.println("================================");
     }
 }

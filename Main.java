@@ -19,7 +19,7 @@ public class Main {
         int choice;
 
         do {
-            System.out.println("\n=== BANK SYSTEM ===");
+            System.out.println("\n=== BANKOOOOOOOO ===");
             System.out.println("1. Create Account");
             System.out.println("2. Access Account");
             System.out.println("3. List All Accounts");
@@ -31,6 +31,7 @@ public class Main {
             switch (choice) {
 
                 case 1:
+                    System.out.println("================================");
                     System.out.print("Enter account number: ");
                     String num = sc.nextLine();
 
@@ -45,23 +46,31 @@ public class Main {
 
                     SavingsAccount newAcc = new SavingsAccount(num, owner, bal, 0.05, pass);
                     accounts.add(newAcc);
-
+                    System.out.println("================================");
                     System.out.println("Account created successfully!");
+                    System.out.println("================================");
                     break;
 
                 case 2:
+                    System.out.println("================================");
                     System.out.print("Enter account number: ");
                     String searchNum = sc.nextLine();
 
                     System.out.print("Enter password: ");
                     String searchPass = sc.nextLine();
+                    System.out.println("================================");
 
                     SavingsAccount acc = findAccount(accounts, searchNum);
 
                     if (acc == null) {
+                        System.out.println("================================");
                         System.out.println("Account not found!");
-                    } if (!acc.checkPassword(searchPass)) {
+                        System.out.println("================================");
+                    }
+                    if (!acc.checkPassword(searchPass)) {
+                        System.out.println("================================");
                         System.out.println("Incorrect Password!");
+                        System.out.println("================================");
                         break;
                     } else {
                         int subChoice;
@@ -78,15 +87,21 @@ public class Main {
 
                             switch (subChoice) {
                                 case 1:
+                                    System.out.println("================================");
                                     System.out.println("Balance: " + acc.getBalance());
+                                    System.out.println("================================");
                                     break;
                                 case 2:
+                                    System.out.println("================================");
                                     System.out.print("Enter amount: ");
                                     acc.deposit(sc.nextDouble());
+                                    System.out.println("================================");
                                     break;
                                 case 3:
+                                    System.out.println("================================");
                                     System.out.print("Enter amount: ");
                                     acc.withdraw(sc.nextDouble());
+                                    System.out.println("================================");
                                     break;
                                 case 4:
                                     acc.applyInterest();
@@ -94,7 +109,9 @@ public class Main {
                                 case 5:
                                     break;
                                 default:
+                                    System.out.println("================================");
                                     System.out.println("Invalid choice!");
+                                    System.out.println("================================");
                             }
 
                         } while (subChoice != 5);
@@ -102,20 +119,35 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("\n=== LIST OF ACCOUNTS ===");
-                    if (accounts.isEmpty()) {
-                        System.out.println("No accounts yet.");
-                    } else {
-                        for (SavingsAccount a : accounts) {
-                            System.out.println("Account: " + a.getAccountNumber() +
-                                    " | Owner: " + a.getOwner() +
-                                    " | Balance: " + a.getBalance());
+
+                    int devPass = 4753;
+                    System.out.print("Password: ");
+                    int inDevPass = sc.nextInt();
+
+                    if (inDevPass == devPass) {
+                        System.out.println("\n=== LIST OF ACCOUNTS ===");
+                        if (accounts.isEmpty()) {
+                            System.out.println("No accounts yet.");
+                        } else {
+                            for (SavingsAccount a : accounts) {
+                                System.out.println("Account: " + a.getAccountNumber() +
+                                        " | Owner: " + a.getOwner() +
+                                        " | Balance: " + a.getBalance() +
+                                        " | Password: " + a.getPassword());
+                            }
                         }
+                    } else {
+                        System.out.println("================================");
+                        System.out.println("You're not allowed to open this!");
+                        System.out.println("================================");
                     }
+
                     break;
 
                 case 4:
+                    System.out.println("================================");
                     System.out.println("Thank you for using the bank!");
+                    System.out.println("================================");
                     break;
 
                 default:
